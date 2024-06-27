@@ -8,12 +8,11 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) < new Date(evtB.date) ? 1 : -1   // Modification de la valeur donnée pour inverser l'ordre
   );
-  console.log(byDateDesc);
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => setIndex(index < (byDateDesc.length - 1 ) ? index + 1 : 0), // DataLength - 1 pour éviter de dépasser la taille du tableau
       5000
     );
   };
@@ -46,7 +45,7 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx} // Correction pour que le bouton radio soit bien coché en fonction de l'index
                 />
               ))}
             </div>
