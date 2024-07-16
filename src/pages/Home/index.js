@@ -109,10 +109,9 @@ const Page = () => {
           {({ setIsOpened }) => (
             <Form
               onSuccess={() => {
-                console.log('Form onSuccess called');
                 setIsOpened(true);
               }}
-              onError={() => console.log('Form onError called')}
+              onError={() => null}
             />
           )}
         </Modal>
